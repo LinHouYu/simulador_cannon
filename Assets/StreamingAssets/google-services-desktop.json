@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "423440127016",
+    "firebase_url": "https://cannonrank-default-rtdb.firebaseio.com",
+    "project_id": "cannonrank",
+    "storage_bucket": "cannonrank.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:423440127016:android:5c23880e3b93275a1e111d",
+        "android_client_info": {
+          "package_name": "com.fenzi.cannonrank"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCguX8TmP5qHCQ1c3mDtAdVEJWp5EBQ3F0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 9053743877050166428}
   - component: {fileID: 2538399990139787306}
   - component: {fileID: 6463122950377812530}
+  - component: {fileID: 2835669654681435595}
   m_Layer: 0
   m_Name: "\u9776\u5B50\u4E0BHinge"
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 6419490893391002307}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.144182, y: -0.8766005, z: 2.5172155}
-  m_LocalScale: {x: 1, y: 1.4, z: 0.1}
+  m_LocalPosition: {x: 2.144182, y: -0.092, z: 2.505}
+  m_LocalScale: {x: 1, y: 1, z: 0.05}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6751360341560120814}
@@ -67,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 2ff319305a7f17a45b0130f713131b11, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -176,6 +177,18 @@ HingeJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &2835669654681435595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419490893391002307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea17c6d293446b848a3140a02299b9e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8101781980371132704
 GameObject:
   m_ObjectHideFlags: 0
@@ -205,8 +218,8 @@ Transform:
   m_GameObject: {fileID: 8101781980371132704}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.144182, y: 0.5383992, z: 2.5072155}
-  m_LocalScale: {x: 1, y: 1.4, z: 0.1}
+  m_LocalPosition: {x: 2.144182, y: 0.466, z: 2.5072155}
+  m_LocalScale: {x: 1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6751360341560120814}
@@ -242,7 +255,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: af90e2b18d987364bb12a456eddcf1b9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

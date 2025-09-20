@@ -5,18 +5,33 @@ using TMPro;
 
 public class cannon : MonoBehaviour
 {
+
     public GameObject cannonBallPrefab;
     public Transform firepoint;
     public float fireRate = 0.5f;
     private float nextFireTime = 0.0f;
     public float shootForce = 700f;
+
+    [Header("角度控制")]
     public Slider angleSliderX;
     public Slider angleSliderY;
+    [Header("冷却时间")]
     public Slider cooldownSlider;
     public TMP_Text cooldownTMPText;
+    [Header("子弹数量")]
+    public Slider bulletSlider;
+    public int maxAmmo = 20;
+    public int currentAmmo = 0;
+    [Header("音效")]
+    public AudioSource audioSource;   //播放器
+    public AudioClip shootClip;       //发射音效
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+
         if (cooldownSlider != null)
         {
             cooldownSlider.minValue = 0f;
@@ -25,7 +40,20 @@ public class cannon : MonoBehaviour
         }
 
         UpdateCooldownUI(); //初始化显示
+        
+
+        //初始化子弹
+        currentAmmo = maxAmmo;
+        if(bulletSlider != null)
+        {
+            bulletSlider.minValue = 0;
+            bulletSlider.maxValue = maxAmmo;
+            bulletSlider.value = currentAmmo;
+            bulletSlider.interactable = false;
+        }
+    
     }
+
 
     // Update is called once per frame
     void Update()
@@ -43,16 +71,39 @@ public class cannon : MonoBehaviour
     {
         if (cannonBallPrefab != null && firepoint != null)
         {
-            GameObject cannonBall = Instantiate(cannonBallPrefab, firepoint.position, firepoint.rotation);
-            Rigidbody rb = cannonBall.GetComponent<Rigidbody>();
-            if (rb != null)
+            if (currentAmmo > 0)
             {
-                rb.AddForce(firepoint.up * shootForce);
+                GameObject cannonBall = Instantiate(cannonBallPrefab, firepoint.position, firepoint.rotation);
+                Rigidbody rb = cannonBall.GetComponent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddForce(firepoint.up * shootForce);
+                }
+
+                currentAmmo--; // 扣除子弹
+                UpdateAmmoUI();
+                // 播放发射音效
+                if (audioSource != null && shootClip != null)
+                {
+                    audioSource.PlayOneShot(shootClip);
+                }
+            }
+            else
+            {
+                Debug.Log("没有子弹了！");
             }
         }
         else
         {
             Debug.LogWarning("Cannon ball prefab or firepoint is missing");
+        }
+    }
+
+    public void UpdateAmmoUI()
+    {
+        if (bulletSlider != null)
+        {
+            bulletSlider.value = currentAmmo;
         }
     }
 
@@ -77,6 +128,11 @@ public class cannon : MonoBehaviour
 
         if (cooldownTMPText != null)
             cooldownTMPText.text = clampedCD > 0f ? clampedCD.ToString("F1") + "s" : "";
+    }
+
+    public int GetCurrentAmmo()
+    {
+        return currentAmmo;
     }
 
 
