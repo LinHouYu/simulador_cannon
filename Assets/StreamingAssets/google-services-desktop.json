@@ -1,22 +1,22 @@
 {
   "project_info": {
-    "project_number": "423440127016",
-    "firebase_url": "https://cannonrank-default-rtdb.firebaseio.com",
-    "project_id": "cannonrank",
-    "storage_bucket": "cannonrank.firebasestorage.app"
+    "project_number": "462738042097",
+    "firebase_url": "https://cannonrank-6d870-default-rtdb.firebaseio.com",
+    "project_id": "cannonrank-6d870",
+    "storage_bucket": "cannonrank-6d870.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:423440127016:android:5c23880e3b93275a1e111d",
+        "mobilesdk_app_id": "1:462738042097:android:a6253731fbde91eda74d50",
         "android_client_info": {
-          "package_name": "com.fenzi.cannonrank"
+          "package_name": "com.fenzi.cannon"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCguX8TmP5qHCQ1c3mDtAdVEJWp5EBQ3F0"
+          "current_key": "AIzaSyA39eScj8rFKxU10m4EjuPERGnE1alIyL8"
         }
       ],
       "services": {

@@ -1,12 +1,13 @@
-﻿using UnityEngine;
-using TMPro;
-using UnityEngine.SceneManagement;
-using Firebase;
+﻿using Firebase;
+using Firebase.Auth;
 using Firebase.Database;
 using Firebase.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DebugHUD : MonoBehaviour
 {
@@ -30,22 +31,32 @@ public class DebugHUD : MonoBehaviour
         if (gameOverPanel != null) gameOverPanel.SetActive(false);
         if (rankPanel != null) rankPanel.SetActive(false);
 
-        // 初始化 Firebase
         var options = new AppOptions
         {
-            DatabaseUrl = new Uri("https://cannonrank-6d870-default-rtdb.firebaseio.com/") // 你的数据库地址
+            DatabaseUrl = new Uri("https://cannonrank-6d870-default-rtdb.firebaseio.com/")
         };
 
         FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task =>
         {
             if (task.Result == DependencyStatus.Available)
             {
-                FirebaseApp app = FirebaseApp.DefaultInstance ?? FirebaseApp.Create(options);
-                if (FirebaseApp.DefaultInstance.Options.DatabaseUrl == null)
-                {
-                    FirebaseApp.DefaultInstance.Options.DatabaseUrl = options.DatabaseUrl;
-                }
+                // 创建一个独立实例，避免 DefaultInstance URL 不生效
+                var app = FirebaseApp.Create(options, "CannonRankApp");
                 dbRef = FirebaseDatabase.GetInstance(app).RootReference;
+
+                // 匿名登录
+                FirebaseAuth.DefaultInstance.SignInAnonymouslyAsync().ContinueWithOnMainThread(authTask =>
+                {
+                    if (authTask.IsCompleted && !authTask.IsFaulted)
+                    {
+                        Debug.Log("匿名登录成功: " + authTask.Result.User.UserId);
+                    }
+                    else
+                    {
+                        Debug.LogError("匿名登录失败: " + authTask.Exception);
+                    }
+                });
+
                 Debug.Log("Firebase 初始化成功！");
             }
             else
@@ -54,6 +65,7 @@ public class DebugHUD : MonoBehaviour
             }
         });
     }
+
 
     void Update()
     {
